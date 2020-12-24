@@ -21,4 +21,9 @@ export default {
   margin: 0 auto;
   padding: 0 10px;
 }
+.home {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 </style>

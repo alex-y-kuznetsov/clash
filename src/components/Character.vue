@@ -1,5 +1,7 @@
 <template>
-  <div class="character_profile">
+  <div class="character_profile" 
+       v-on:click.stop="selectCharacter()"
+       v-bind:class="{ 'selected': isSelected }">
     <div class="character_name">
       {{ currentCharacter.name }}
     </div>
@@ -27,16 +29,27 @@ export default {
   props: {
     id: {
       type: Number
+    },
+    selected: {
+      type: Boolean
     }
   },
   data() {
     return {
-      characterId: this.id,
+      characterId: this.id
     };
   },
   computed: {
+    isSelected() {
+      return this.selected
+    },
     currentCharacter() {
       return characters.find(character => character.id === this.characterId);
+    }
+  },
+  methods: {
+    selectCharacter() {
+      this.$emit('characterSelection', this.characterId)
     }
   }
 };
@@ -48,6 +61,18 @@ export default {
   width: 200px;
   display: flex;
   flex-direction: column;
+  padding: 10px;
+  border: 2px solid #42b983;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &.selected {
+    box-shadow: #FFF 0 -1px 4px, 
+    #ff0 0 -2px 10px, 
+    #ff8000 0 -10px 20px, 
+    red 0 -18px 40px, 
+    5px 5px 15px 5px rgba(0,0,0,0);
+  }
 }
 .character_name {
   font-weight: bold;
