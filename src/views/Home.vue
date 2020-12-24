@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home container">
     <Start />
   </div>
 </template>
@@ -14,3 +14,11 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="less">
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+</style>
