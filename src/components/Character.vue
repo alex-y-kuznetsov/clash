@@ -16,6 +16,14 @@
         <span>{{ stat.value }}</span>
       </div>
     </div>
+    <div class="character_profile_items">
+      <div class="character_stats_item" 
+           v-for="(item, index) in currentCharacter.items"
+           v-bind:key="index">
+        <strong>Starting Items: </strong>
+        <span>{{ item.name }} (x{{ item.amount }})</span>
+      </div>
+    </div>
     <div class="character_profile_summary">
       {{ currentCharacter.bio }}
     </div>
@@ -58,7 +66,7 @@ export default {
 <style scoped lang="less">
 .character_profile {
   margin: 0 10px;
-  width: 200px;
+  width: 220px;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -87,7 +95,8 @@ export default {
     max-height: 100%;
   }
 }
-.character_profile_stats {
+.character_profile_stats,
+.character_profile_items {
   margin-bottom: 10px;
 }
 .character_stats_item {

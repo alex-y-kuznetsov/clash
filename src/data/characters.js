@@ -5,22 +5,20 @@ export default [
     img: '/img/character_images/johnwick.jpg',
     stats: [
       {
-        name: 'Strength',
-        value: 5
+        name: 'Health',
+        value: 50
       },
       {
-        name: 'Agility',
-        value: 4
-      },
+        name: 'Stamina',
+        value: 40
+      }
+    ],
+    items: [
       {
-        name: 'Vitality',
-        value: 8
-      },
-      {
-        name: 'Intelligence',
-        value: 5
-    }
-  ],
+        name: 'Pencil',
+        amount: 1
+      }
+    ],
     bio: 'This is a short summary of the character John Wick'
   },
   {
@@ -29,22 +27,20 @@ export default [
     img: '/img/character_images/monicageller.jpg',
     stats: [
       {
-        name: 'Strength',
-        value: 3
+        name: 'Health',
+        value: 30
       },
       {
-        name: 'Agility',
-        value: 5
-      },
+        name: 'Stamina',
+        value: 60
+      }
+    ],
+    items: [
       {
-        name: 'Vitality',
-        value: 4
-      },
-      {
-        name: 'Intelligence',
-        value: 7
-    }
-  ],
+        name: 'Spoonge',
+        amount: 1
+      }
+    ],
     bio: 'This is a short summary of the character Monica Geller'
   },
   {
@@ -53,20 +49,18 @@ export default [
     img: '/img/character_images/winniethepooh.jpg',
     stats: [
       {
-        name: 'Strength',
-        value: 7
+        name: 'Health',
+        value: 70
       },
       {
-        name: 'Agility',
-        value: 3
-      },
+        name: 'Stamina',
+        value: 30
+      }
+    ],
+    items: [
       {
-        name: 'Vitality',
-        value: 6
-      },
-      {
-        name: 'Intelligence',
-        value: 4
+        name: 'Honey',
+        amount: 1
       }
     ],
     bio: 'This is a short summary of the character Winnie the Pooh'
