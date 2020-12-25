@@ -1,0 +1,42 @@
+.character_profile {
+  margin: 0 10px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 2px solid @main_color;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &.selected {
+    box-shadow: #FFF 0 -1px 4px, 
+    #ff0 0 -2px 10px, 
+    #ff8000 0 -10px 20px, 
+    red 0 -18px 40px, 
+    5px 5px 15px 5px rgba(0,0,0,0);
+  }
+}
+
+.character_name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.character_profile_image {
+  width: 190px;
+  height: 160px;
+  margin: 0 auto 10px auto;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.character_profile_stats,
+.character_profile_items {
+  margin-bottom: 10px;
+}
+
+.character_stats_item {
+  margin-bottom: 5px;
+}
