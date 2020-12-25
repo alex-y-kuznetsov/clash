@@ -16,10 +16,16 @@ export default [
     items: [
       {
         name: 'Pencil',
-        amount: 1
+        stats: {
+          summary: 'Damage +10',
+          damage: 10,
+          health: 0,
+          stamina: 0
+        },
+        img: '/img/character_items/pencil.jpg'
       }
     ],
-    bio: 'This is a short summary of the character John Wick'
+    bio: 'Does not like dog jokes. Will draw a pencil sketch of you'
   },
   {
     id: 2,
@@ -38,10 +44,16 @@ export default [
     items: [
       {
         name: 'Spoonge',
-        amount: 1
+        stats: {
+          summary: 'Stamina +10',
+          damage: 0,
+          health: 0,
+          stamina: 10
+        },
+        img: '/img/character_items/spoonge.jpg'
       }
     ],
-    bio: 'This is a short summary of the character Monica Geller'
+    bio: 'Order is her law'
   },
   {
     id: 3,
@@ -59,10 +71,16 @@ export default [
     ],
     items: [
       {
-        name: 'Honey',
-        amount: 1
+        name: 'Pot of Honey',
+        stats: {
+          summary: 'Health +10',
+          damage: 0,
+          health: 10,
+          stamina: 0
+        },
+        img: '/img/character_items/potofhoney.jpg'
       }
     ],
-    bio: 'This is a short summary of the character Winnie the Pooh'
+    bio: 'Honey, I\'m home. Where is all the honey?'
   }
 ]

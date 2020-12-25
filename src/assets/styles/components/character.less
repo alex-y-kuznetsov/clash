@@ -5,8 +5,13 @@
   flex-direction: column;
   padding: 10px;
   border: 2px solid @main_color;
+  background-color: @secondary_background_color;
   border-radius: 10px;
   cursor: pointer;
+
+  &:hover {
+    border-color: @text_color;
+  }
 
   &.selected {
     box-shadow: #FFF 0 -1px 4px, 
@@ -14,22 +19,28 @@
     #ff8000 0 -10px 20px, 
     red 0 -18px 40px, 
     5px 5px 15px 5px rgba(0,0,0,0);
+    border-color: @text_color;
   }
 }
 
 .character_name {
   font-weight: bold;
   margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 18px;
+}
+
+.character_profile_data {
+  margin-bottom: 10px;
+  display: flex;
 }
 
 .character_profile_image {
-  width: 190px;
+  width: 120px;
   height: 160px;
-  margin: 0 auto 10px auto;
-  img {
-    max-width: 100%;
-    max-height: 100%;
-  }
+  border: 2px solid #cccccc;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
 .character_profile_stats,
@@ -39,4 +50,10 @@
 
 .character_stats_item {
   margin-bottom: 5px;
+}
+
+.inventory_item_visual {
+  width: 40px;
+  height: 40px;
+  margin: 5px 0;
 }
