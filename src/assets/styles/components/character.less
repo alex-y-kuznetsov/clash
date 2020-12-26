@@ -7,11 +7,14 @@
   border: 2px solid @main_color;
   background-color: @secondary_background_color;
   border-radius: 10px;
-  cursor: pointer;
 
-  &:hover {
+  &:not(.inactive) {
+    cursor: pointer;
+    &:hover {
     border-color: @text_color;
   }
+  }
+  
 
   &.selected {
     box-shadow: #FFF 0 -1px 4px, 

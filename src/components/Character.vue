@@ -1,7 +1,7 @@
 <template>
   <div class="character_profile" 
        v-on:click.stop="selectCharacter()"
-       v-bind:class="{ 'selected': isSelected }">
+       v-bind:class="{ 'selected': isSelected, 'inactive': !isStartPage }">
     <div class="character_name">
       {{ currentCharacter.name }}
     </div>
@@ -60,13 +60,18 @@ export default {
     isSelected() {
       return this.selected
     },
+    isStartPage() {
+      return this.$route.name === 'StartPage';
+    },
     currentCharacter() {
       return characters.find(character => character.id === this.characterId);
     }
   },
   methods: {
     selectCharacter() {
-      this.$emit('characterSelection', this.characterId)
+      if (this.isStartPage) {
+        this.$emit('characterSelection', this.characterId)
+      }
     }
   }
 };
