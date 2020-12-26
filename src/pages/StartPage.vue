@@ -1,7 +1,7 @@
 <template>
-  <div class="character_select">
-    <div class="character_select_title_block">
-      <h1 class="character_select_title">Choose A Character</h1>
+  <div class="inner_page character_select">
+    <div class="inner_page_title_block">
+      <h1 class="character_select_title">Choose a Character</h1>
       <div class="title_buttons">
         <button class="button character_title_button">Create</button>
         <button class="button character_title_button character_reset"
@@ -9,7 +9,7 @@
                 v-on:click.prevent="setSelectedCharacter()">Reset</button>
       </div>
     </div>
-    <div class="character_profiles">
+    <div class="inner_field character_profiles">
       <Character
         v-for="character in characters"
         v-bind:key="character.id"
@@ -18,7 +18,7 @@
         v-on:characterSelection="setSelectedCharacter($event)"
       />
     </div>
-    <div class="character_select_controls">
+    <div class="inner_page_controls">
       <router-link v-bind:to="{name: 'ClashPage'}" 
                   v-if="selectedCharacter"
                   class="button next_button">Next</router-link>
@@ -32,9 +32,7 @@ import Character from "@/components/Character.vue";
 import characters from "@/data/characters.js";
 
 export default {
-  components: {
-    Character,
-  },
+  components: { Character },
   data() {
     return {
       characters,
