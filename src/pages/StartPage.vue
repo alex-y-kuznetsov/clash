@@ -3,8 +3,8 @@
     <div class="character_select_title_block">
       <h1 class="character_select_title">Choose A Character</h1>
       <div class="title_buttons">
-        <button class="character_tittle_button">Create</button>
-        <button class="character_tittle_button character_reset"
+        <button class="button character_title_button">Create</button>
+        <button class="button character_title_button character_reset"
                 v-bind:disabled="!selectedCharacter"
                 v-on:click.prevent="selectedCharacter = null">Reset</button>
       </div>
@@ -17,6 +17,11 @@
         v-bind:selected="character.id === selectedCharacter"
         v-on:characterSelection="setSelectedCharacter($event)"
       />
+    </div>
+    <div class="character_select_controls">
+      <router-link v-bind:to="{name: 'ClashPage'}" 
+                  v-if="selectedCharacter"
+                  class="button next_button">Next</router-link>
     </div>
   </div>
 </template>
