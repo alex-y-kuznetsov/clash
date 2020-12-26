@@ -43,6 +43,7 @@ export default {
   methods: {
     setSelectedCharacter(id) {
       this.selectedCharacter = id;
+      this.$store.commit('updateSelectedCharacter', id);
     },
   },
 };
