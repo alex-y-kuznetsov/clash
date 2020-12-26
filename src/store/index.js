@@ -9,7 +9,7 @@ export default new Vuex.Store({
   },
   mutations: {
     updateSelectedCharacter(state, characterId) {
-      state.selectedCharacter = characterId
+      state.selectedCharacter = characterId;
     }
   },
   actions: {

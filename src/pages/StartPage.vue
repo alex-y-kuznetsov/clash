@@ -6,7 +6,7 @@
         <button class="button character_title_button">Create</button>
         <button class="button character_title_button character_reset"
                 v-bind:disabled="!selectedCharacter"
-                v-on:click.prevent="resetSelectedCharacter">Reset</button>
+                v-on:click.prevent="setSelectedCharacter()">Reset</button>
       </div>
     </div>
     <div class="character_profiles">
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import Character from "@/components/Character.vue";
 import characters from "@/data/characters.js";
 
@@ -36,18 +37,18 @@ export default {
   },
   data() {
     return {
-      selectedCharacter: null,
       characters,
     };
   },
+  computed: {
+    ...mapState({
+      selectedCharacter: 'selectedCharacter'
+    })
+  },
   methods: {
     setSelectedCharacter(id) {
-      this.selectedCharacter = id;
-      this.$store.commit('updateSelectedCharacter', id);
-    },
-    resetSelectedCharacter() {
-      this.selectedCharacter = null;
-      this.$store.commit('updateSelectedCharacter', null);
+      let data = id || null;
+      this.$store.commit('updateSelectedCharacter', data);
     },
   },
 };
