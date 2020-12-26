@@ -39,9 +39,9 @@ export default {
     };
   },
   computed: {
-    ...mapState({
-      selectedCharacterId: 'selectedCharacterId'
-    })
+    ...mapState([
+      'selectedCharacterId'
+    ])
   },
   methods: {
     setSelectedCharacter(id) {
