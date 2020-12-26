@@ -6,8 +6,8 @@
       </div>
     </div>
     <div class="inner_field battlefield">
-      <Character v-bind:id="selectedCharacter"
-                 v-if="selectedCharacter" />
+      <Character v-bind:id="selectedCharacterId"
+                 v-if="selectedCharacterId" />
       <div class="character_error" v-else>Please go back to the character select screen to select a character</div>
     </div>
     <div class="inner_page_controls">
@@ -29,7 +29,7 @@ export default {
   },
   computed: {
     ...mapState({
-      selectedCharacter: 'selectedCharacter'
+      selectedCharacterId: 'selectedCharacterId'
     })
   }
 };

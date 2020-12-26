@@ -5,7 +5,7 @@
       <div class="title_buttons">
         <button class="button character_title_button">Create</button>
         <button class="button character_title_button character_reset"
-                v-bind:disabled="!selectedCharacter"
+                v-bind:disabled="!selectedCharacterId"
                 v-on:click.prevent="setSelectedCharacter()">Reset</button>
       </div>
     </div>
@@ -14,13 +14,13 @@
         v-for="character in characters"
         v-bind:key="character.id"
         v-bind:id="character.id"
-        v-bind:selected="character.id === selectedCharacter"
+        v-bind:selected="character.id === selectedCharacterId"
         v-on:characterSelection="setSelectedCharacter($event)"
       />
     </div>
     <div class="inner_page_controls">
       <router-link v-bind:to="{name: 'ClashPage'}" 
-                  v-if="selectedCharacter"
+                  v-if="selectedCharacterId"
                   class="button next_button">Next</router-link>
     </div>
   </div>
@@ -40,13 +40,13 @@ export default {
   },
   computed: {
     ...mapState({
-      selectedCharacter: 'selectedCharacter'
+      selectedCharacterId: 'selectedCharacterId'
     })
   },
   methods: {
     setSelectedCharacter(id) {
-      let data = id || null;
-      this.$store.commit('updateSelectedCharacter', data);
+      let dataObject = this.characters.find(character => character.id === id) || null;
+      this.$store.commit('updateSelectedCharacter', dataObject);
     },
   },
 };

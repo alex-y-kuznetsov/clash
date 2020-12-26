@@ -5,11 +5,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    selectedCharacter: null
+    selectedCharacterId: null,
+    selectedCharacterObject: null
   },
   mutations: {
-    updateSelectedCharacter(state, characterId) {
-      state.selectedCharacter = characterId;
+    updateSelectedCharacter(state, characterObject) {
+      characterObject ? state.selectedCharacterId = characterObject.id : state.selectedCharacterId = null;
+      state.selectedCharacterObject = characterObject;
     }
   },
   actions: {
