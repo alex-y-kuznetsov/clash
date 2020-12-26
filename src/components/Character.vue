@@ -12,9 +12,10 @@
       <div class="character_profile_stats">
         <div class="character_stats_item" 
             v-for="(stat, index) in currentCharacter.stats"
-            v-bind:key="index">
-          <strong>{{ stat.name }}: </strong>
-          <span>{{ stat.value }}</span>
+            v-bind:key="index"
+            v-bind:class="stat.name.toLowerCase()">
+          <span>{{ stat.name }}: </span>
+          <span class="stats_value">{{ stat.value }}</span>
         </div>
       </div>
     </div>
@@ -22,7 +23,7 @@
       <div class="character_stats_item" 
            v-for="(item, index) in currentCharacter.items"
            v-bind:key="index">
-        <strong>Starting Item: </strong>
+        <strong>Item: </strong>
         <div class="character_inventory">
           <div class="inventory_item">
             <div class="inventory_item_visual">

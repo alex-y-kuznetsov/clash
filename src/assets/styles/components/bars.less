@@ -1,0 +1,42 @@
+.bars {
+  margin: 10px 10px 0 10px;
+}
+
+.bar {
+  width: 244px;
+  height: 26px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  position: relative;
+  border: 1px solid @text_color;
+  border-radius: 10px;
+  overflow: hidden;
+
+  &.health_bar {
+    margin-bottom: 6px;
+    
+    .bar_fill {
+      background-color: #ff0000;
+    }
+  }
+
+  &.stamina_bar {
+    .bar_fill {
+      background-color: #0000ff;
+    }
+  }
+}
+
+.bar_fill {
+  height: 100%;
+}
+
+.bar_number {
+  line-height: 26px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  color: @text_color;
+}

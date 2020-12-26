@@ -6,9 +6,11 @@
       </div>
     </div>
     <div class="inner_field battlefield">
-      <Character v-bind:id="selectedCharacterId"
-                 v-if="selectedCharacterId" />
-      <div class="character_error" v-else>Please go back to the character select screen to select a character</div>
+      <div class="character_zone" v-if="selectedCharacterId">
+      <Character v-bind:id="selectedCharacterId" />
+      <Bars />
+      </div>
+      <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character</div>
     </div>
     <div class="inner_page_controls">
       <router-link v-bind:to="{ name: 'StartPage' }" class="button"
@@ -20,9 +22,10 @@
 <script>
 import { mapState } from "vuex";
 import Character from "@/components/Character.vue";
+import Bars from "@/components/Bars.vue";
 
 export default {
-  components: { Character },
+  components: { Character, Bars },
   data() {
     return {
     }
