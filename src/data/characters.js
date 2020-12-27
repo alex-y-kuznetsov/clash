@@ -14,7 +14,7 @@ export default [
       },
       {
         name: 'Attack',
-        value: 3
+        value: 30
       },
       {
         name: 'Defense',
@@ -24,8 +24,8 @@ export default [
     item: {
       name: 'Pencil',
       modifier: 'Attack',
-      modifierValue: 1,
-      summary: 'Attack +1',
+      modifierValue: 10,
+      summary: 'Attack +10',
       img: '/img/character_items/pencil.jpg'
       },
     bio: 'Does not like dog jokes. Will draw a pencil sketch of you'
@@ -45,7 +45,7 @@ export default [
       },
       {
         name: 'Attack',
-        value: 2
+        value: 20
       },
       {
         name: 'Defense',
@@ -76,7 +76,7 @@ export default [
       },
       {
         name: 'Attack',
-        value: 1
+        value: 10
       },
       {
         name: 'Defense',

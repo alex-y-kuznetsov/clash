@@ -13,7 +13,7 @@
         </div>
         <span class="versus_sign">VS</span>
         <div class="encounter_zone">
-          
+          <Encounter />
         </div>
       </div>
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character</div>
@@ -28,9 +28,10 @@
 import { mapState } from "vuex";
 import Character from "@/components/Character.vue";
 import Bars from "@/components/Bars.vue";
+import Encounter from "@/components/Encounter.vue";
 
 export default {
-  components: { Character, Bars },
+  components: { Character, Bars, Encounter },
   data() {
     return {
     }
