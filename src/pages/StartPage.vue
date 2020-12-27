@@ -49,7 +49,7 @@ export default {
         let modifiedStat = dataObject.stats.find(stat => stat.name === dataObject.item.modifier);
         dataObject.stats.forEach(stat => {
           if (stat === modifiedStat) {
-            stat.modifiedValue = modifiedStat.value + dataObject.item.modifiedValue
+            stat.modifiedValue = modifiedStat.value + dataObject.item.modifierValue
           }   
         })
       }

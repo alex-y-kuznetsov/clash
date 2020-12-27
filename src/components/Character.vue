@@ -79,7 +79,7 @@ export default {
         if (stat === modifiedStat) {
           this.modifiedStatData = {
             name: modifiedStat.name,
-            value: modifiedStat.value + this.currentCharacter.item.modifiedValue
+            value: modifiedStat.value + this.currentCharacter.item.modifierValue
           }
         }   
       })

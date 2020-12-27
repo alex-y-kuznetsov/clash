@@ -24,7 +24,7 @@ export default [
     item: {
       name: 'Pencil',
       modifier: 'Attack',
-      modifiedValue: 1,
+      modifierValue: 1,
       summary: 'Attack +1',
       img: '/img/character_items/pencil.jpg'
       },
@@ -55,7 +55,7 @@ export default [
     item: {
       name: 'Spoonge',
       modifier: 'Stamina',
-      modifiedValue: 10,
+      modifierValue: 10,
       summary: 'Stamina +10',
       img: '/img/character_items/spoonge.jpg'
     },
@@ -86,7 +86,7 @@ export default [
     item:{
       name: 'Pot of Honey',
       modifier: 'Health',
-      modifiedValue: 10,
+      modifierValue: 10,
       summary: 'Health +10',
       img: '/img/character_items/potofhoney.jpg'
     },
