@@ -13,7 +13,9 @@
         </div>
         <div class="versus_sign">
           <span>VS</span>
-          <button class="button" v-on:click.prevent="venture">Venture</button>
+          <button class="button" v-if="isCharacterVenturing">Fight</button>
+          <button class="button" v-on:click.prevent="venture"
+                  v-bind:disabled="isCharacterVenturing">{{ isCharacterVenturing ? 'Venturing' : 'Venture' }}</button>
         </div>
         <div class="encounter_zone">
           <Encounter v-show="isCharacterVenturing" />
@@ -22,7 +24,7 @@
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character</div>
     </div>
     <div class="inner_page_controls">
-      <button v-on:click.prevent="goBack" class="button">Retreat</button>
+      <button v-on:click.prevent="goBack" class="button">{{ selectedCharacterId ? 'Retreat' : 'Back' }}</button>
     </div>
   </div>
 </template>
