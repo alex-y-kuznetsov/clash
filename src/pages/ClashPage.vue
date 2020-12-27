@@ -13,8 +13,7 @@
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character</div>
     </div>
     <div class="inner_page_controls">
-      <router-link v-bind:to="{ name: 'StartPage' }" class="button"
-          >Back</router-link>
+      <router-link v-bind:to="{ name: 'StartPage' }" class="button">Back</router-link>
     </div>
   </div>
 </template>

@@ -15,8 +15,7 @@
         v-bind:key="character.id"
         v-bind:id="character.id"
         v-bind:selected="character.id === selectedCharacterId"
-        v-on:characterSelection="setSelectedCharacter($event)"
-      />
+        v-on:characterSelection="setSelectedCharacter($event)" />
     </div>
     <div class="inner_page_controls">
       <router-link v-bind:to="{name: 'ClashPage'}" 
