@@ -11,20 +11,23 @@ export default [
       {
         name: 'Stamina',
         value: 40
-      }
-    ],
-    items: [
+      },
       {
-        name: 'Pencil',
-        stats: {
-          summary: 'Damage +10',
-          damage: 10,
-          health: 0,
-          stamina: 0
-        },
-        img: '/img/character_items/pencil.jpg'
+        name: 'Attack',
+        value: 3
+      },
+      {
+        name: 'Defense',
+        value: 2
       }
     ],
+    item: {
+      name: 'Pencil',
+      modifier: 'Attack',
+      modifiedValue: 1,
+      summary: 'Attack +1',
+      img: '/img/character_items/pencil.jpg'
+      },
     bio: 'Does not like dog jokes. Will draw a pencil sketch of you'
   },
   {
@@ -39,20 +42,23 @@ export default [
       {
         name: 'Stamina',
         value: 60
-      }
-    ],
-    items: [
+      },
       {
-        name: 'Spoonge',
-        stats: {
-          summary: 'Stamina +10',
-          damage: 0,
-          health: 0,
-          stamina: 10
-        },
-        img: '/img/character_items/spoonge.jpg'
+        name: 'Attack',
+        value: 2
+      },
+      {
+        name: 'Defense',
+        value: 2
       }
     ],
+    item: {
+      name: 'Spoonge',
+      modifier: 'Stamina',
+      modifiedValue: 10,
+      summary: 'Stamina +10',
+      img: '/img/character_items/spoonge.jpg'
+    },
     bio: 'Order is her law'
   },
   {
@@ -67,20 +73,23 @@ export default [
       {
         name: 'Stamina',
         value: 30
-      }
-    ],
-    items: [
+      },
       {
-        name: 'Pot of Honey',
-        stats: {
-          summary: 'Health +10',
-          damage: 0,
-          health: 10,
-          stamina: 0
-        },
-        img: '/img/character_items/potofhoney.jpg'
+        name: 'Attack',
+        value: 1
+      },
+      {
+        name: 'Defense',
+        value: 3
       }
     ],
+    item:{
+      name: 'Pot of Honey',
+      modifier: 'Health',
+      modifiedValue: 10,
+      summary: 'Health +10',
+      img: '/img/character_items/potofhoney.jpg'
+    },
     bio: 'Honey, I\'m home. Where is all the honey?'
   }
 ]

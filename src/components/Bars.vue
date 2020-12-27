@@ -36,9 +36,10 @@ export default {
       return Math.round(100 - ((100 * valueLost) / totalValue)) + '%';
     },
     getBarValue(name) {
+      const statsPath = this.selectedCharacterObject.stats;
       switch(name) {
-        case 'health' : return this.selectedCharacterObject.stats[0].value;
-        case 'stamina' : return this.selectedCharacterObject.stats[1].value
+        case 'health' : return statsPath[0].modifiedValue ? statsPath[0].modifiedValue : statsPath[0].value;
+        case 'stamina' : return statsPath[1].modifiedValue ? statsPath[1].modifiedValue : statsPath[1].value;
       }
     }
   }

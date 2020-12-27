@@ -45,6 +45,14 @@ export default {
   methods: {
     setSelectedCharacter(id) {
       let dataObject = this.characters.find(character => character.id === id) || null;
+      if (dataObject) {
+        let modifiedStat = dataObject.stats.find(stat => stat.name === dataObject.item.modifier);
+        dataObject.stats.forEach(stat => {
+          if (stat === modifiedStat) {
+            stat.modifiedValue = modifiedStat.value + dataObject.item.modifiedValue
+          }   
+        })
+      }
       this.$store.commit('updateSelectedCharacter', dataObject);
     },
   },
