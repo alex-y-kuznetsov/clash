@@ -19,6 +19,9 @@
         </div>
         <div class="encounter_zone">
           <Encounter v-show="isCharacterVenturing" />
+          <div class="encounter_introduction" v-if="this.activeEncounterObject">
+            A {{ this.activeEncounterObject.name }} appears. Will you fight it?
+          </div>
         </div>
       </div>
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character</div>
@@ -46,7 +49,8 @@ export default {
     ...mapState([
       'selectedCharacterId',
       'selectedCharacterObject',
-      'isCharacterVenturing'
+      'isCharacterVenturing',
+      'activeEncounterObject'
     ])
   },
   methods: {
