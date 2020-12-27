@@ -54,7 +54,7 @@ export default {
         })
       }
       this.$store.commit('updateSelectedCharacter', dataObject);
-    },
+    }
   },
 };
 </script>

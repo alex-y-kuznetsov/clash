@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import encounters from '@/data/encounters.js'
 
 export default {
@@ -32,7 +33,17 @@ export default {
 
     }
   },
+  watch: {
+    isCharacterVenturing() {
+      if (this.$store.state.isCharacterVenturing) {
+        this.$store.commit('setActiveEncounter', this.currentEncounter);
+      }
+    }
+  },
   computed: {
+    ...mapState([
+      'isCharacterVenturing'
+    ]),
     currentEncounter() {
       return encounters.find(encounter => encounter.id === 1)
     }

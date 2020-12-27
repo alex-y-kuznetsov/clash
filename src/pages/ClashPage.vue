@@ -11,15 +11,18 @@
           <Character v-bind:id="selectedCharacterId" />
           <Bars />
         </div>
-        <span class="versus_sign">VS</span>
+        <div class="versus_sign">
+          <span>VS</span>
+          <button class="button" v-on:click.prevent="venture">Venture</button>
+        </div>
         <div class="encounter_zone">
-          <Encounter />
+          <Encounter v-show="isCharacterVenturing" />
         </div>
       </div>
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character</div>
     </div>
     <div class="inner_page_controls">
-      <router-link v-bind:to="{ name: 'StartPage' }" class="button">Back</router-link>
+      <button v-on:click.prevent="goBack" class="button">Retreat</button>
     </div>
   </div>
 </template>
@@ -34,13 +37,27 @@ export default {
   components: { Character, Bars, Encounter },
   data() {
     return {
+
     }
   },
   computed: {
     ...mapState([
       'selectedCharacterId',
-      'selectedCharacterObject'
+      'selectedCharacterObject',
+      'isCharacterVenturing'
     ])
+  },
+  methods: {
+    venture() {
+      if(!this.isCharacterVenturing) {
+        this.$store.commit('setCharacterVenturing', true);
+      }
+    },
+    goBack() {
+      this.$store.commit('setCharacterVenturing', false);
+      this.$store.commit('setActiveEncounter', null);
+      this.$router.push({name: 'StartPage'});
+    }
   }
 };
 </script>
