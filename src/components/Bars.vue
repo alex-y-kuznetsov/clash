@@ -1,12 +1,12 @@
 <template>
   <div class="bars">
     <div class="bar health_bar">
-      <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar(damageTaken, getBarName('health')) }"></div>
-      <span class="bar_number">{{ calculateRemainingBar(damageTaken, getBarName('health')) }}</span>
+      <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar(damageTaken, getBarValue('health')) }"></div>
+      <span class="bar_number">{{ calculateRemainingBar(damageTaken, getBarValue('health')) }}</span>
     </div>
     <div class="bar stamina_bar">
-      <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar(staminaSpent, getBarName('stamina')) }"></div>
-      <span class="bar_number">{{ calculateRemainingBar(staminaSpent, getBarName('stamina')) }}</span>
+      <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar(staminaSpent, getBarValue('stamina')) }"></div>
+      <span class="bar_number">{{ calculateRemainingBar(staminaSpent, getBarValue('stamina')) }}</span>
     </div>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
       }
       return Math.round(100 - ((100 * valueLost) / totalValue)) + '%';
     },
-    getBarName(name) {
+    getBarValue(name) {
       switch(name) {
         case 'health' : return this.selectedCharacterObject.stats[0].value;
         case 'stamina' : return this.selectedCharacterObject.stats[1].value
