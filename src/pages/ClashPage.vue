@@ -5,10 +5,16 @@
       <div class="title_buttons">
       </div>
     </div>
-    <div class="inner_field battlefield">
-      <div class="character_zone" v-if="selectedCharacterId">
-      <Character v-bind:id="selectedCharacterId" />
-      <Bars />
+    <div class="inner_field">
+      <div class="battlefield" v-if="selectedCharacterId">
+        <div class="character_zone" >
+          <Character v-bind:id="selectedCharacterId" />
+          <Bars />
+        </div>
+        <span class="versus_sign">VS</span>
+        <div class="encounter_zone">
+          
+        </div>
       </div>
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character</div>
     </div>

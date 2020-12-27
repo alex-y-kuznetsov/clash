@@ -83,7 +83,7 @@ export default [
         value: 3
       }
     ],
-    item:{
+    item: {
       name: 'Pot of Honey',
       modifier: 'Health',
       modifierValue: 10,
