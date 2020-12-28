@@ -13,8 +13,13 @@
         </div>
         <div class="versus_sign">
           <span>VS</span>
-          <button class="button" v-if="isCharacterVenturing" v-on:click="fight">Fight</button>
-          <button class="button" v-on:click.prevent="venture"
+          <button class="button" 
+                  v-bind:class="{ 'button_exhausted' : !isCharacterReady }"
+                  v-bind:disabled="!isCharacterReady"
+                  v-if="isCharacterVenturing" 
+                  v-on:click="fight">Fight</button>
+          <button class="button" 
+                  v-on:click.prevent="venture"
                   v-bind:disabled="isCharacterVenturing">{{ isCharacterVenturing ? 'Venturing' : 'Venture' }}</button>
         </div>
         <div class="encounter_zone">
@@ -53,8 +58,12 @@ export default {
       'selectedCharacterId',
       'selectedCharacterObject',
       'isCharacterVenturing',
-      'activeEncounterObject'
-    ])
+      'activeEncounterObject',
+      'barsState'
+    ]),
+    isCharacterReady() {
+      return this.barsState.staminaSpent < this.selectedCharacterObject.stats[1].value
+    }
   },
   methods: {
     fight() {

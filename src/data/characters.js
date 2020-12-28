@@ -30,8 +30,8 @@ export default [
       },
     skill: {
       name: 'Stab',
-      staminaCost: 10,
-      summary: 'Stamina Use: 10',
+      staminaCost: 7,
+      summary: 'Stamina Use: 7',
       img: '/img/character_skills/stab.svg'
     },
     bio: 'Does not like dog jokes. Will draw a pencil sketch of you'
@@ -67,8 +67,8 @@ export default [
     },
     skill: {
       name: 'Swipe',
-      staminaCost: 20,
-      summary: 'Stamina Use: 20',
+      staminaCost: 15,
+      summary: 'Stamina Use: 15',
       img: '/img/character_skills/swipe.svg'
     },
     bio: 'Order is her law'
@@ -104,8 +104,8 @@ export default [
     },
     skill: {
       name: 'Bash',
-      staminaCost: 15,
-      summary: 'Stamina Use: 15',
+      staminaCost: 5,
+      summary: 'Stamina Use: 5',
       img: '/img/character_skills/bash.svg'
     },
     bio: 'Honey, I\'m home. Where is all the honey?'

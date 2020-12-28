@@ -36,3 +36,19 @@
   line-height: 22px;
   color: @danger_color;
 }
+
+.button_exhausted {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -50px;
+    width: 270px;
+    content: 'Your character is exhausted and needs to restore stamina. Try retreating and coming back later';
+    font-size: 12px;
+    line-height: 14px;
+  }
+}
