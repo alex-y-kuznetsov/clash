@@ -9,9 +9,12 @@ export default new Vuex.Store({
     selectedCharacterObject: null,
     isCharacterVenturing: false,
     activeEncounterObject: null,
-    barsState: {
+    characterBarsState: {
       damageTaken: 0,
       staminaSpent: 0
+    },
+    encounterBarsState: {
+      damageTaken: 0,
     }
   },
   mutations: {
@@ -25,8 +28,9 @@ export default new Vuex.Store({
     setActiveEncounter(state, encounterObject) {
       encounterObject ? state.activeEncounterObject = encounterObject : state.activeEncounterObject = null;
     },
-    updateBarsState(state, barsObject) {
-      state.barsState = barsObject;
+    updateBarsState(state, combinedResourceObject) {
+      state.characterBarsState = combinedResourceObject.chracterResources;
+      state.encounterBarsState = combinedResourceObject.encounterResources;
     }
   },
   actions: {

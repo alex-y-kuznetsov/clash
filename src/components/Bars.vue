@@ -1,12 +1,12 @@
 <template>
   <div class="bars">
     <div class="bar health_bar">
-      <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar(barsState.damageTaken, getBarValue('health')) }"></div>
-      <span class="bar_number">{{ calculateRemainingBar(barsState.damageTaken, getBarValue('health')) }}</span>
+      <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar((currentBarType === 'character' ? characterBarsState.damageTaken : encounterBarsState.damageTaken), getBarValue('health')) }"></div>
+      <span class="bar_number">{{ calculateRemainingBar((currentBarType === 'character' ? characterBarsState.damageTaken : encounterBarsState.damageTaken), getBarValue('health')) }}</span>
     </div>
-    <div class="bar stamina_bar">
-      <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar(barsState.staminaSpent, getBarValue('stamina')) }"></div>
-      <span class="bar_number">{{ calculateRemainingBar(barsState.staminaSpent, getBarValue('stamina')) }}</span>
+    <div class="bar stamina_bar" v-if="barType === 'character'">
+      <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar(characterBarsState.staminaSpent, getBarValue('stamina')) }"></div>
+      <span class="bar_number">{{ calculateRemainingBar(characterBarsState.staminaSpent, getBarValue('stamina')) }}</span>
     </div>
   </div>
 </template>
@@ -15,16 +15,23 @@
 import { mapState } from "vuex";
 
 export default {
+  props: {
+    barType: {
+      type: String
+    }
+  },
   data() {
     return {
-
+      currentBarType: this.barType
     }
   },
   computed: {
     ...mapState([
       'selectedCharacterObject',
-      'barsState'
-    ]),
+      'activeEncounterObject',
+      'characterBarsState',
+      'encounterBarsState'
+    ])
   },
   methods: {
     calculateRemainingBar(valueLost, totalValue) {
@@ -36,10 +43,15 @@ export default {
       return Math.round(100 - ((100 * valueLost) / totalValue)) + '%';
     },
     getBarValue(name) {
-      const statsPath = this.selectedCharacterObject.stats;
-      switch(name) {
-        case 'health' : return statsPath[0].modifiedValue ? statsPath[0].modifiedValue : statsPath[0].value;
-        case 'stamina' : return statsPath[1].modifiedValue ? statsPath[1].modifiedValue : statsPath[1].value;
+      if (this.currentBarType === 'character') {
+        const statsPath =  this.selectedCharacterObject.stats;
+        switch(name) {
+          case 'health' : return statsPath[0].modifiedValue ? statsPath[0].modifiedValue : statsPath[0].value;
+          case 'stamina' : return statsPath[1].modifiedValue ? statsPath[1].modifiedValue : statsPath[1].value;
+        }
+      } else if (this.currentBarType === 'encounter') {
+        const statsPath =  this.activeEncounterObject.stats;
+        return statsPath[0].modifiedValue ? statsPath[0].modifiedValue : statsPath[0].value;
       }
     }
   }

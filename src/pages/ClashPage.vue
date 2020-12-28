@@ -9,7 +9,7 @@
       <div class="battlefield" v-if="selectedCharacterId">
         <div class="character_zone" >
           <Character v-bind:id="selectedCharacterId" />
-          <Bars />
+          <Bars v-bind:bar-type="'character'"/>
         </div>
         <div class="versus_sign">
           <span>VS</span>
@@ -24,6 +24,7 @@
         </div>
         <div class="encounter_zone">
           <Encounter v-show="isCharacterVenturing" />
+          <Bars v-bind:bar-type="'encounter'" v-if="this.activeEncounterObject" />
           <div class="encounter_introduction" v-if="this.activeEncounterObject">
             A {{ this.activeEncounterObject.name }} appears. Will you fight it?
           </div>
@@ -47,9 +48,12 @@ export default {
   components: { Character, Bars, Encounter },
   data() {
     return {
-      resourceObject: {
+      characterResourceObject: {
         damageTaken: 0,
         staminaSpent: 0
+      },
+      encounterResourceObject: {
+        damageTaken: 0
       }
     }
   },
@@ -59,17 +63,22 @@ export default {
       'selectedCharacterObject',
       'isCharacterVenturing',
       'activeEncounterObject',
-      'barsState'
+      'characterBarsState'
     ]),
     isCharacterReady() {
-      return this.barsState.staminaSpent < this.selectedCharacterObject.stats[1].value
+      return this.characterBarsState.staminaSpent < this.selectedCharacterObject.stats[1].value
     }
   },
   methods: {
     fight() {
-      this.resourceObject.damageTaken += this.activeEncounterObject.stats[2].value;
-      this.resourceObject.staminaSpent += this.selectedCharacterObject.skill.staminaCost;
-      this.$store.commit('updateBarsState', this.resourceObject);
+      this.characterResourceObject.damageTaken += this.activeEncounterObject.stats[2].value;
+      this.characterResourceObject.staminaSpent += this.selectedCharacterObject.skill.staminaCost;
+      this.encounterResourceObject.damageTaken += this.selectedCharacterObject.stats[2].value;
+      let combinedResourceObject = {
+        chracterResources: this.characterResourceObject,
+        encounterResources: this.encounterResourceObject
+      }
+      this.$store.commit('updateBarsState', combinedResourceObject);
     },
     venture() {
       if(!this.isCharacterVenturing) {
@@ -80,8 +89,13 @@ export default {
       this.$store.commit('setCharacterVenturing', false);
       this.$store.commit('setActiveEncounter', null);
       const resourceReset = {
-        damageTaken: 0,
-        staminaSpent: 0
+        chracterResources: {
+          damageTaken: 0,
+          staminaSpent: 0
+        },
+        encounterResources: {
+          damageTaken: 0
+        }
       };
       this.$store.commit('updateBarsState', resourceReset);
       this.$router.push({name: 'StartPage'});
