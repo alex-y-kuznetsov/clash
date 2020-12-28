@@ -8,7 +8,11 @@ export default new Vuex.Store({
     selectedCharacterId: null,
     selectedCharacterObject: null,
     isCharacterVenturing: false,
-    activeEncounterObject: null
+    activeEncounterObject: null,
+    barsState: {
+      damageTaken: 0,
+      staminaSpent: 0
+    }
   },
   mutations: {
     updateSelectedCharacter(state, characterObject) {
@@ -20,6 +24,9 @@ export default new Vuex.Store({
     },
     setActiveEncounter(state, encounterObject) {
       encounterObject ? state.activeEncounterObject = encounterObject : state.activeEncounterObject = null;
+    },
+    updateBarsState(state, barsObject) {
+      state.barsState = barsObject;
     }
   },
   actions: {

@@ -19,15 +19,30 @@
         </div>
       </div>
     </div>
-    <div class="character_profile_items">
+    <div class="character_profile_arsenal">
       <div class="character_stats_item">
         <strong>Item: </strong>
-        <div class="character_inventory">
-          <div class="inventory_item">
-            <div class="inventory_item_visual">
+        <div class="character_resourses">
+          <div class="resourses_item">
+            <div class="resourses_item_visual">
               <img v-bind:src="currentCharacter.item.img" />
             </div>
-            <div class="inventory_item_stats">{{ currentCharacter.item.name }} ({{ currentCharacter.item.summary }})</div>
+            <div class="resourses_item_stats">
+              {{ currentCharacter.item.name }} <br /> ({{ currentCharacter.item.summary }})
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="character_stats_item">
+        <strong>Skill: </strong>
+        <div class="character_resourses">
+          <div class="resourses_item">
+            <div class="resourses_item_visual">
+              <img v-bind:src="currentCharacter.skill.img" />
+            </div>
+            <div class="resourses_item_stats">
+              {{ currentCharacter.skill.name }} <br /> ({{ currentCharacter.skill.summary }})
+            </div>
           </div>
         </div>
       </div>

@@ -25,9 +25,15 @@ export default [
       name: 'Pencil',
       modifier: 'Attack',
       modifierValue: 10,
-      summary: 'Attack +10',
+      summary: 'Attack: +10',
       img: '/img/character_items/pencil.jpg'
       },
+    skill: {
+      name: 'Stab',
+      staminaCost: 10,
+      summary: 'Stamina Use: 10',
+      img: '/img/character_skills/stab.svg'
+    },
     bio: 'Does not like dog jokes. Will draw a pencil sketch of you'
   },
   {
@@ -56,8 +62,14 @@ export default [
       name: 'Spoonge',
       modifier: 'Stamina',
       modifierValue: 10,
-      summary: 'Stamina +10',
+      summary: 'Stamina: +10',
       img: '/img/character_items/spoonge.jpg'
+    },
+    skill: {
+      name: 'Swipe',
+      staminaCost: 20,
+      summary: 'Stamina Use: 20',
+      img: '/img/character_skills/swipe.svg'
     },
     bio: 'Order is her law'
   },
@@ -87,8 +99,14 @@ export default [
       name: 'Pot of Honey',
       modifier: 'Health',
       modifierValue: 10,
-      summary: 'Health +10',
+      summary: 'Health: +10',
       img: '/img/character_items/potofhoney.jpg'
+    },
+    skill: {
+      name: 'Bash',
+      staminaCost: 15,
+      summary: 'Stamina Use: 15',
+      img: '/img/character_skills/bash.svg'
     },
     bio: 'Honey, I\'m home. Where is all the honey?'
   }

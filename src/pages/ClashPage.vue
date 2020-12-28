@@ -13,7 +13,7 @@
         </div>
         <div class="versus_sign">
           <span>VS</span>
-          <button class="button" v-if="isCharacterVenturing">Fight</button>
+          <button class="button" v-if="isCharacterVenturing" v-on:click="fight">Fight</button>
           <button class="button" v-on:click.prevent="venture"
                   v-bind:disabled="isCharacterVenturing">{{ isCharacterVenturing ? 'Venturing' : 'Venture' }}</button>
         </div>
@@ -27,7 +27,7 @@
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character</div>
     </div>
     <div class="inner_page_controls">
-      <button v-on:click.prevent="goBack" class="button">{{ selectedCharacterId ? 'Retreat' : 'Back' }}</button>
+      <button v-on:click.prevent="goBack" class="button">{{ isCharacterVenturing ? 'Retreat' : 'Back' }}</button>
     </div>
   </div>
 </template>
@@ -42,7 +42,10 @@ export default {
   components: { Character, Bars, Encounter },
   data() {
     return {
-
+      resourceObject: {
+        damageTaken: 0,
+        staminaSpent: 0
+      }
     }
   },
   computed: {
@@ -54,6 +57,11 @@ export default {
     ])
   },
   methods: {
+    fight() {
+      this.resourceObject.damageTaken += this.activeEncounterObject.stats[2].value;
+      this.resourceObject.staminaSpent += this.selectedCharacterObject.skill.staminaCost;
+      this.$store.commit('updateBarsState', this.resourceObject);
+    },
     venture() {
       if(!this.isCharacterVenturing) {
         this.$store.commit('setCharacterVenturing', true);
@@ -62,6 +70,11 @@ export default {
     goBack() {
       this.$store.commit('setCharacterVenturing', false);
       this.$store.commit('setActiveEncounter', null);
+      const resourceReset = {
+        damageTaken: 0,
+        staminaSpent: 0
+      };
+      this.$store.commit('updateBarsState', resourceReset);
       this.$router.push({name: 'StartPage'});
     }
   }
