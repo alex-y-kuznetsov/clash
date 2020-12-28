@@ -85,7 +85,7 @@ export default {
   methods: {
     selectCharacter() {
       if (this.isStartPage) {
-        this.$emit('characterSelection', this.characterId)
+        this.$emit('character-selection', this.characterId)
       }
     },
     getModifiedStat() {

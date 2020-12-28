@@ -9,7 +9,8 @@
       <div class="battlefield" v-if="selectedCharacterId">
         <div class="character_zone" >
           <Character v-bind:id="selectedCharacterId" />
-          <Bars v-bind:bar-type="'character'"/>
+          <Bars v-bind:bar-type="'character'" 
+                v-on:catch-knock-out="processKnockOut($event)"/>
         </div>
         <div class="versus_sign">
           <span>VS</span>
@@ -24,7 +25,9 @@
         </div>
         <div class="encounter_zone">
           <Encounter v-show="isCharacterVenturing" />
-          <Bars v-bind:bar-type="'encounter'" v-if="this.activeEncounterObject" />
+          <Bars v-bind:bar-type="'encounter'" 
+                v-if="this.activeEncounterObject"
+                v-on:catch-knock-out="processKnockOut($event)" />
           <div class="encounter_introduction" v-if="this.activeEncounterObject">
             A {{ this.activeEncounterObject.name }} appears. Will you fight it?
           </div>
@@ -70,6 +73,9 @@ export default {
     }
   },
   methods: {
+    processKnockOut(data) {
+      console.log(data + ' is out');
+    },
     fight() {
       this.characterResourceObject.damageTaken += this.activeEncounterObject.stats[2].value;
       this.characterResourceObject.staminaSpent += this.selectedCharacterObject.skill.staminaCost;

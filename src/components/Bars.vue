@@ -2,7 +2,7 @@
   <div class="bars">
     <div class="bar health_bar">
       <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar((currentBarType === 'character' ? characterBarsState.damageTaken : encounterBarsState.damageTaken), getBarValue('health')) }"></div>
-      <span class="bar_number">{{ calculateRemainingBar((currentBarType === 'character' ? characterBarsState.damageTaken : encounterBarsState.damageTaken), getBarValue('health')) }}</span>
+      <span class="bar_number">{{ calculateRemainingBar((currentBarType === 'character' ? characterBarsState.damageTaken : encounterBarsState.damageTaken), getBarValue('health'), true) }}</span>
     </div>
     <div class="bar stamina_bar" v-if="barType === 'character'">
       <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar(characterBarsState.staminaSpent, getBarValue('stamina')) }"></div>
@@ -34,10 +34,13 @@ export default {
     ])
   },
   methods: {
-    calculateRemainingBar(valueLost, totalValue) {
+    calculateRemainingBar(valueLost, totalValue, isBarFlag) {
       if (valueLost < 0) {
         return '100%';
-      } else if (valueLost > totalValue) {
+      } else if (valueLost >= totalValue) {
+        if (isBarFlag) {
+          this.$emit('catch-knock-out', this.currentBarType);
+        }
         return '0%';
       }
       return Math.round(100 - ((100 * valueLost) / totalValue)) + '%';
