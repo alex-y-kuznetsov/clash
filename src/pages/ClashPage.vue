@@ -80,7 +80,7 @@ export default {
     processKnockOut(data) {
       console.log(data + ' is out');
       if (data === 'encounter') {
-        this.$store.commit('countWonEncouners');
+        this.$store.commit('setWonEncouners');
         this.$store.commit('setCharacterVenturing', false);
         this.$store.commit('setActiveEncounter', null);
         const encounterResourcesReset = {
@@ -135,6 +135,7 @@ export default {
       };
       this.$store.commit('updateBarsState', resourceReset);
       this.$store.commit('setGameOver', false);
+      this.$store.commit('setWonEncouners', true);
       this.$router.push({name: 'StartPage'});
     }
   }

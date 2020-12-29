@@ -38,8 +38,8 @@ export default new Vuex.Store({
         state.encounterBarsState = combinedResourceObject.encounterResources;
       }
     },
-    countWonEncouners(state) {
-      state.wonEncounters ++;
+    setWonEncouners(state, reset) {
+      reset ? state.wonEncounters = 0 : state.wonEncounters ++;
     },
     setGameOver(state, boolean) {
       state.isGameOver = boolean;
