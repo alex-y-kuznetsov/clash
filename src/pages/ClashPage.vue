@@ -2,7 +2,8 @@
   <div class="inner_page clash">
     <div class="inner_page_title_block">
       <h1 class="character_select_title">Clash!</h1>
-      <div class="title_buttons">
+      <div class="title_statistics">
+        {{ wonEncounters ? 'Encounters Won: ' + wonEncounters : ''}}
       </div>
     </div>
     <div class="inner_field">
@@ -66,7 +67,8 @@ export default {
       'selectedCharacterObject',
       'isCharacterVenturing',
       'activeEncounterObject',
-      'characterBarsState'
+      'characterBarsState',
+      'wonEncounters'
     ]),
     isCharacterReady() {
       return this.characterBarsState.staminaSpent < this.selectedCharacterObject.stats[1].value
