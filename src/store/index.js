@@ -15,7 +15,9 @@ export default new Vuex.Store({
     },
     encounterBarsState: {
       damageTaken: 0,
-    }
+    },
+    wonEncounters: 0,
+    isGameOver: false
   },
   mutations: {
     updateSelectedCharacter(state, characterObject) {
@@ -29,8 +31,18 @@ export default new Vuex.Store({
       encounterObject ? state.activeEncounterObject = encounterObject : state.activeEncounterObject = null;
     },
     updateBarsState(state, combinedResourceObject) {
-      state.characterBarsState = combinedResourceObject.chracterResources;
-      state.encounterBarsState = combinedResourceObject.encounterResources;
+      if (combinedResourceObject.chracterResources) {
+        state.characterBarsState = combinedResourceObject.chracterResources;
+      }
+      if (combinedResourceObject.encounterResources) {
+        state.encounterBarsState = combinedResourceObject.encounterResources;
+      }
+    },
+    countWonEncouners(state) {
+      state.wonEncounters ++;
+    },
+    setGameOver(state) {
+      state.isGameOver = true;
     }
   },
   actions: {

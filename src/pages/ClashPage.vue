@@ -75,6 +75,32 @@ export default {
   methods: {
     processKnockOut(data) {
       console.log(data + ' is out');
+      if (data === 'encounter') {
+        this.$store.commit('countWonEncouners');
+        this.$store.commit('setCharacterVenturing', false);
+        this.$store.commit('setActiveEncounter', null);
+        const encounterResourcesReset = {
+          encounterResources: {
+            damageTaken: 0
+          }
+        };
+        this.encounterResourceObject.damageTaken = 0;
+        this.$store.commit('updateBarsState', encounterResourcesReset);
+      }
+      if (data === 'character') {
+        this.$store.commit('setGameOver');
+        this.$store.commit('setCharacterVenturing', false);
+        this.$store.commit('setActiveEncounter', null);
+        const characterResourcesReset = {
+          characterResources: {
+            damageTaken: 0,
+            staminaSpent: 0
+          }
+        };
+        this.characterResourceObject.damageTaken = 0;
+        this.characterResourceObject.staminaSpent = 0;
+        this.$store.commit('updateBarsState', characterResourcesReset);
+      }
     },
     fight() {
       this.characterResourceObject.damageTaken += this.activeEncounterObject.stats[2].value;
