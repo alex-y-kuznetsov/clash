@@ -41,8 +41,8 @@ export default new Vuex.Store({
     countWonEncouners(state) {
       state.wonEncounters ++;
     },
-    setGameOver(state) {
-      state.isGameOver = true;
+    setGameOver(state, boolean) {
+      state.isGameOver = boolean;
     }
   },
   actions: {

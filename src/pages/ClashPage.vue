@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="inner_field">
-      <div class="battlefield" v-if="selectedCharacterId">
+      <div class="battlefield" v-if="selectedCharacterId && !isGameOver">
         <div class="character_zone" >
           <Character v-bind:id="selectedCharacterId" />
           <Bars v-bind:bar-type="'character'" 
@@ -34,7 +34,8 @@
           </div>
         </div>
       </div>
-      <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character</div>
+      <div class="character_error" v-if="selectedCharacterId && isGameOver">Game over! The Encounters were too strong and too many. </div>
+      <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character.</div>
     </div>
     <div class="inner_page_controls">
       <button v-on:click.prevent="goBack" class="button">{{ isCharacterVenturing ? 'Retreat' : 'Back' }}</button>
@@ -68,7 +69,8 @@ export default {
       'isCharacterVenturing',
       'activeEncounterObject',
       'characterBarsState',
-      'wonEncounters'
+      'wonEncounters',
+      'isGameOver'
     ]),
     isCharacterReady() {
       return this.characterBarsState.staminaSpent < this.selectedCharacterObject.stats[1].value
@@ -90,7 +92,7 @@ export default {
         this.$store.commit('updateBarsState', encounterResourcesReset);
       }
       if (data === 'character') {
-        this.$store.commit('setGameOver');
+        this.$store.commit('setGameOver', true);
         this.$store.commit('setCharacterVenturing', false);
         this.$store.commit('setActiveEncounter', null);
         const characterResourcesReset = {
@@ -132,6 +134,7 @@ export default {
         }
       };
       this.$store.commit('updateBarsState', resourceReset);
+      this.$store.commit('setGameOver', false);
       this.$router.push({name: 'StartPage'});
     }
   }
