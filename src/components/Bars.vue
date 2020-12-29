@@ -1,8 +1,8 @@
 <template>
   <div class="bars">
     <div class="bar health_bar">
-      <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar((currentBarType === 'character' ? characterBarsState.damageTaken : encounterBarsState.damageTaken), getBarValue('health')) }"></div>
-      <span class="bar_number">{{ calculateRemainingBar((currentBarType === 'character' ? characterBarsState.damageTaken : encounterBarsState.damageTaken), getBarValue('health'), true) }}</span>
+      <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar(pathToDamageTaken, getBarValue('health')) }"></div>
+      <span class="bar_number">{{ calculateRemainingBar(pathToDamageTaken, getBarValue('health'), true) }}</span>
     </div>
     <div class="bar stamina_bar" v-if="barType === 'character'">
       <div class="bar_fill" v-bind:style="{ width: calculateRemainingBar(characterBarsState.staminaSpent, getBarValue('stamina')) }"></div>
@@ -31,7 +31,10 @@ export default {
       'activeEncounterObject',
       'characterBarsState',
       'encounterBarsState'
-    ])
+    ]),
+    pathToDamageTaken() {
+      return this.currentBarType === 'character' ? this.characterBarsState.damageTaken : this.encounterBarsState.damageTaken;
+    }
   },
   methods: {
     calculateRemainingBar(valueLost, totalValue, isBarFlag) {
