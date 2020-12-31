@@ -13,17 +13,8 @@
           <Bars v-bind:bar-type="'character'" 
                 v-on:catch-knock-out="processKnockOut($event)"/>
         </div>
-        <div class="versus_sign">
-          <span>VS</span>
-          <button class="button" 
-                  v-bind:class="{ 'button_exhausted' : !isCharacterReady }"
-                  v-bind:disabled="!isCharacterReady || isCurrentFight"
-                  v-if="isCharacterVenturing" 
-                  v-on:click="fight">{{isCurrentFight ? 'Fighting' : 'Fight' }}</button>
-          <button class="button" 
-                  v-on:click.prevent="venture"
-                  v-bind:disabled="isCharacterVenturing">{{ isCharacterVenturing ? 'Venturing' : 'Venture' }}</button>
-        </div>
+        <Versus v-on:venture-clicked="venture"
+               v-on:fight-clicked="fight" />
         <div class="encounter_zone">
           <Encounter v-show="isCharacterVenturing" />
           <Bars v-bind:bar-type="'encounter'" 
@@ -34,7 +25,7 @@
           </div>
         </div>
       </div>
-      <div class="character_error" v-if="selectedCharacterId && isGameOver">Game over! <br /> The Encounters were too strong and too many. </div>
+      <div class="character_error" v-if="selectedCharacterId && isGameOver">Defeat! <br /> The Encounters were too strong and too many. </div>
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character.</div>
     </div>
     <div class="inner_page_controls">
@@ -48,9 +39,10 @@ import { mapState } from "vuex";
 import Character from "@/components/Character.vue";
 import Bars from "@/components/Bars.vue";
 import Encounter from "@/components/Encounter.vue";
+import Versus from "@/components/Versus.vue";
 
 export default {
-  components: { Character, Bars, Encounter },
+  components: { Character, Bars, Encounter, Versus },
   data() {
     return {
       characterResourceObject: {
@@ -68,27 +60,23 @@ export default {
         encounterResourcesReset: {
             damageTaken: 0
           }
-      },
-      isCurrentFight: false
+      }
     }
   },
   computed: {
     ...mapState([
       'selectedCharacterId',
       'selectedCharacterObject',
-      'isCharacterVenturing',
       'activeEncounterObject',
+      'isCharacterVenturing',
       'characterBarsState',
       'wonEncounters',
       'isGameOver'
-    ]),
-    isCharacterReady() {
-      return this.characterBarsState.staminaSpent < this.selectedCharacterObject.stats[1].value
-    }
+    ])
   },
   methods: {
     processKnockOut(data) {
-      this.isCurrentFight = true;
+      this.$store.commit('setCurrentFight', true);
       const _this = this;
       setTimeout( function() {
         _this.$store.commit('setCharacterVenturing', false);
@@ -106,7 +94,7 @@ export default {
           _this.characterResourceObject.staminaSpent = 0;
           _this.$store.commit('updateBarsState', _this.resourcesReset.characterResourcesReset);
         }
-        _this.isCurrentFight = false;
+        _this.$store.commit('setCurrentFight', false);
       }, 1000);  
     },
     fight() {

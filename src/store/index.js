@@ -17,7 +17,8 @@ export default new Vuex.Store({
       damageTaken: 0,
     },
     wonEncounters: 0,
-    isGameOver: false
+    isGameOver: false,
+    isCurrentFight: false,
   },
   mutations: {
     updateSelectedCharacter(state, characterObject) {
@@ -43,9 +44,15 @@ export default new Vuex.Store({
     },
     setGameOver(state, boolean) {
       state.isGameOver = boolean;
+    },
+    setCurrentFight(state, boolean) {
+      state.isCurrentFight = boolean;
     }
   },
-  actions: {
+  getters: {
+    isCharacterReady(state) {
+      return state.characterBarsState.staminaSpent < state.selectedCharacterObject.stats[1].value
+    }
   },
   modules: {
   }
