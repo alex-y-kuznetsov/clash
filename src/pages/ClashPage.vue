@@ -1,7 +1,7 @@
 <template>
   <div class="inner_page clash">
     <div class="inner_page_title_block">
-      <h1 class="character_select_title">Clash!</h1>
+      <h1 class="inner_page_title_text">Clash!</h1>
       <div class="title_statistics">
         {{ wonEncounters ? 'Encounters Won: ' + wonEncounters : ''}}
       </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="inner_page character_select">
     <div class="inner_page_title_block">
-      <h1 class="character_select_title">Choose a Character</h1>
+      <h1 class="inner_page_title_text">Choose a Character</h1>
       <div class="title_buttons">
         <button class="button character_title_button">Create</button>
         <button class="button character_title_button character_reset"
