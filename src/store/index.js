@@ -39,7 +39,7 @@ export default new Vuex.Store({
       }
     },
     setWonEncouners(state, reset) {
-      reset ? state.wonEncounters = 0 : state.wonEncounters ++;
+      reset ? state.wonEncounters = 0 : state.wonEncounters++;
     },
     setGameOver(state, boolean) {
       state.isGameOver = boolean;

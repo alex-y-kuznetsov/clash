@@ -19,7 +19,7 @@
                   v-bind:class="{ 'button_exhausted' : !isCharacterReady }"
                   v-bind:disabled="!isCharacterReady || isCurrentFight"
                   v-if="isCharacterVenturing" 
-                  v-on:click="fight">Fight</button>
+                  v-on:click="fight">{{isCurrentFight ? 'Fighting' : 'Fight' }}</button>
           <button class="button" 
                   v-on:click.prevent="venture"
                   v-bind:disabled="isCharacterVenturing">{{ isCharacterVenturing ? 'Venturing' : 'Venture' }}</button>
