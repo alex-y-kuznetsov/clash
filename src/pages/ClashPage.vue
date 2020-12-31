@@ -17,7 +17,7 @@
           <span>VS</span>
           <button class="button" 
                   v-bind:class="{ 'button_exhausted' : !isCharacterReady }"
-                  v-bind:disabled="!isCharacterReady"
+                  v-bind:disabled="!isCharacterReady || isCurrentFight"
                   v-if="isCharacterVenturing" 
                   v-on:click="fight">Fight</button>
           <button class="button" 
@@ -34,7 +34,7 @@
           </div>
         </div>
       </div>
-      <div class="character_error" v-if="selectedCharacterId && isGameOver">Game over! The Encounters were too strong and too many. </div>
+      <div class="character_error" v-if="selectedCharacterId && isGameOver">Game over! <br /> The Encounters were too strong and too many. </div>
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character.</div>
     </div>
     <div class="inner_page_controls">
@@ -68,7 +68,8 @@ export default {
         encounterResourcesReset: {
             damageTaken: 0
           }
-      }
+      },
+      isCurrentFight: false
     }
   },
   computed: {
@@ -87,24 +88,26 @@ export default {
   },
   methods: {
     processKnockOut(data) {
+      this.isCurrentFight = true;
       const _this = this;
-      function knockOutService() {
+      setTimeout( function() {
         _this.$store.commit('setCharacterVenturing', false);
-        _this.$store.commit('setActiveEncounter', null);
-      }
-      if (data === 'encounter') {
-        this.$store.commit('setWonEncouners');
-        knockOutService()
-        this.encounterResourceObject.damageTaken = 0;
-        this.$store.commit('updateBarsState', this.resourcesReset.encounterResourcesReset);
-      }
-      if (data === 'character') {
-        this.$store.commit('setGameOver', true);
-        knockOutService()
-        this.characterResourceObject.damageTaken = 0;
-        this.characterResourceObject.staminaSpent = 0;
-        this.$store.commit('updateBarsState', this.resourcesReset.characterResourcesReset);
-      }
+        if (data === 'encounter') {
+            _this.$store.commit('setWonEncouners');
+            _this.$store.commit('setActiveEncounter', null);
+            _this.encounterResourceObject.damageTaken = 0;
+            _this.$store.commit('updateBarsState', _this.resourcesReset.encounterResourcesReset);
+          
+        }
+        if (data === 'character') {
+          _this.$store.commit('setGameOver', true);
+          _this.$store.commit('setActiveEncounter', null);
+          _this.characterResourceObject.damageTaken = 0;
+          _this.characterResourceObject.staminaSpent = 0;
+          _this.$store.commit('updateBarsState', _this.resourcesReset.characterResourcesReset);
+        }
+        _this.isCurrentFight = false;
+      }, 1000);  
     },
     fight() {
       this.characterResourceObject.damageTaken += this.activeEncounterObject.stats[2].value;
