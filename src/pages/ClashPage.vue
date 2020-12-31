@@ -59,6 +59,15 @@ export default {
       },
       encounterResourceObject: {
         damageTaken: 0
+      },
+      resourcesReset: {
+        characterResourcesReset: {
+          damageTaken: 0,
+          staminaSpent: 0
+        },
+        encounterResourcesReset: {
+            damageTaken: 0
+          }
       }
     }
   },
@@ -78,32 +87,23 @@ export default {
   },
   methods: {
     processKnockOut(data) {
-      console.log(data + ' is out');
+      const _this = this;
+      function knockOutService() {
+        _this.$store.commit('setCharacterVenturing', false);
+        _this.$store.commit('setActiveEncounter', null);
+      }
       if (data === 'encounter') {
         this.$store.commit('setWonEncouners');
-        this.$store.commit('setCharacterVenturing', false);
-        this.$store.commit('setActiveEncounter', null);
-        const encounterResourcesReset = {
-          encounterResources: {
-            damageTaken: 0
-          }
-        };
+        knockOutService()
         this.encounterResourceObject.damageTaken = 0;
-        this.$store.commit('updateBarsState', encounterResourcesReset);
+        this.$store.commit('updateBarsState', this.resourcesReset.encounterResourcesReset);
       }
       if (data === 'character') {
         this.$store.commit('setGameOver', true);
-        this.$store.commit('setCharacterVenturing', false);
-        this.$store.commit('setActiveEncounter', null);
-        const characterResourcesReset = {
-          characterResources: {
-            damageTaken: 0,
-            staminaSpent: 0
-          }
-        };
+        knockOutService()
         this.characterResourceObject.damageTaken = 0;
         this.characterResourceObject.staminaSpent = 0;
-        this.$store.commit('updateBarsState', characterResourcesReset);
+        this.$store.commit('updateBarsState', this.resourcesReset.characterResourcesReset);
       }
     },
     fight() {
