@@ -14,7 +14,7 @@
                 v-on:catch-knock-out="processKnockOut($event)"/>
         </div>
         <Versus v-on:venture-clicked="venture"
-               v-on:fight-clicked="fight" />
+                v-on:fight-clicked="fight" />
         <div class="encounter_zone">
           <Encounter v-show="isCharacterVenturing" />
           <Bars v-bind:bar-type="'encounter'" 
