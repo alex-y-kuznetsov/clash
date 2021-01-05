@@ -30,7 +30,7 @@ export default [
     stats: [
       {
         name: 'Health',
-        value: 20
+        value: 15
       },
       {
         name: 'Type',
@@ -54,7 +54,7 @@ export default [
     stats: [
       {
         name: 'Health',
-        value: 40
+        value: 30
       },
       {
         name: 'Type',
@@ -73,20 +73,20 @@ export default [
   },
   {
     id: 4,
-    name: 'Cavern Drake',
-    img: '/img/encounter_images/caverndrake.jpg',
+    name: 'Jungle Lizard',
+    img: '/img/encounter_images/junglelizard.jpg',
     stats: [
       {
         name: 'Health',
-        value: 50
+        value: 25
       },
       {
         name: 'Type',
-        value: 'Drake'
+        value: 'Lizard'
       },
       {
         name: 'Attack',
-        value: 20
+        value: 15
       },
       {
         name: 'Defense',
@@ -102,7 +102,7 @@ export default [
     stats: [
       {
         name: 'Health',
-        value: 30
+        value: 20
       },
       {
         name: 'Type',
@@ -110,7 +110,7 @@ export default [
       },
       {
         name: 'Attack',
-        value: 30
+        value: 12
       },
       {
         name: 'Defense',
@@ -134,7 +134,7 @@ export default [
       },
       {
         name: 'Attack',
-        value: 50
+        value: 20
       },
       {
         name: 'Defense',

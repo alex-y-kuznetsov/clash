@@ -50,7 +50,9 @@ export default new Vuex.Store({
       state.isCurrentFight = boolean;
     },
     setRandomEncounterNumber(state, range) {
-      state.randomEncounterNumber = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
+      range ?
+        state.randomEncounterNumber = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min :
+        state.randomEncounterNumber = null;
     },
   },
   getters: {

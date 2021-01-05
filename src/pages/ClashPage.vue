@@ -131,6 +131,7 @@ export default {
       this.$store.commit('updateBarsState', resourceReset);
       this.$store.commit('setGameOver', false);
       this.$store.commit('setWonEncouners', true);
+      this.$store.commit('setRandomEncounterNumber', false);
       this.$router.push({name: 'StartPage'});
     }
   }
