@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import randomNumber from '@/helpers/randomNumber.js';
 
 Vue.use(Vuex)
 
@@ -51,7 +52,7 @@ export default new Vuex.Store({
     },
     setRandomEncounterNumber(state, range) {
       range ?
-        state.randomEncounterNumber = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min :
+        state.randomEncounterNumber = randomNumber(range.min, range.max) :
         state.randomEncounterNumber = null;
     },
   },
