@@ -18,9 +18,9 @@
         v-on:character-selection="setSelectedCharacter($event)" />
     </div>
     <div class="inner_page_controls">
-      <router-link v-bind:to="{name: 'ClashPage'}" 
-                  v-if="selectedCharacterId"
-                  class="button next_button">Next</router-link>
+      <button v-on:click="goToClash"
+              v-if="selectedCharacterId"
+              class="button next_button">Next</button>
     </div>
   </div>
 </template>
@@ -29,12 +29,14 @@
 import { mapState } from "vuex";
 import Character from "@/components/Character.vue";
 import characters from "@/data/characters.js";
+import constants from "@/data/constants.js";
 
 export default {
   components: { Character },
   data() {
     return {
       characters,
+      constants
     };
   },
   computed: {
@@ -43,6 +45,10 @@ export default {
     ])
   },
   methods: {
+    goToClash() {
+      this.$store.commit('setRandomEncounterNumber', { min: this.constants.FIRST_ENCOUNTER_ID, max: this.constants.LAST_ENCOUNTER_ID })
+      this.$router.push({name: 'ClashPage'});
+    },
     setSelectedCharacter(id) {
       let dataObject = this.characters.find(character => character.id === id) || null;
       if (dataObject) {

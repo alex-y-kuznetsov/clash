@@ -42,10 +42,11 @@ export default {
   },
   computed: {
     ...mapState([
-      'isCharacterVenturing'
+      'isCharacterVenturing',
+      'randomEncounterNumber'
     ]),
     currentEncounter() {
-      return encounters.find(encounter => encounter.id === 1)
+      return encounters.find(encounter => encounter.id === this.randomEncounterNumber)
     }
   }
 }

@@ -19,6 +19,7 @@ export default new Vuex.Store({
     wonEncounters: 0,
     isGameOver: false,
     isCurrentFight: false,
+    randomEncounterNumber: null
   },
   mutations: {
     updateSelectedCharacter(state, characterObject) {
@@ -47,7 +48,10 @@ export default new Vuex.Store({
     },
     setCurrentFight(state, boolean) {
       state.isCurrentFight = boolean;
-    }
+    },
+    setRandomEncounterNumber(state, range) {
+      state.randomEncounterNumber = Math.floor(Math.random() * (range.max - range.min + 1)) + range.min;
+    },
   },
   getters: {
     isCharacterReady(state) {

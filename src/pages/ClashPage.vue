@@ -36,6 +36,7 @@
 
 <script>
 import { mapState } from "vuex";
+import constants from "@/data/constants.js";
 import Character from "@/components/Character.vue";
 import Bars from "@/components/Bars.vue";
 import Encounter from "@/components/Encounter.vue";
@@ -45,6 +46,7 @@ export default {
   components: { Character, Bars, Encounter, Versus },
   data() {
     return {
+      constants,
       characterResourceObject: {
         damageTaken: 0,
         staminaSpent: 0
@@ -60,7 +62,8 @@ export default {
         encounterResourcesReset: {
             damageTaken: 0
           }
-      }
+      },
+      randomEncounterNumber: null
     }
   },
   computed: {
@@ -80,6 +83,7 @@ export default {
       const _this = this;
       setTimeout( function() {
         _this.$store.commit('setCharacterVenturing', false);
+        _this.$store.commit('setRandomEncounterNumber', { min: _this.constants.FIRST_ENCOUNTER_ID, max: _this.constants.LAST_ENCOUNTER_ID });
         if (data === 'encounter') {
             _this.$store.commit('setWonEncouners');
             _this.$store.commit('setActiveEncounter', null);
