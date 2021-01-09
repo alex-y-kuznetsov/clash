@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <Hello />
     <div class="home container">
       <router-view/>
     </div>
@@ -8,10 +9,11 @@
 </template>
 
 <script>
+import Hello from "@/components/Hello.vue";
 import Rules from "@/components/Rules.vue";
 
 export default {
-  components: { Rules }
+  components: { Hello, Rules }
 }
 </script>
 
