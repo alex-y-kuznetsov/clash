@@ -8,20 +8,10 @@
 </template>
 
 <script>
-const destinations = {
-  StartPage: 'Character Selection',
-  ClashPage: 'Clash'
-};
-
 import Rules from "@/components/Rules.vue";
 
 export default {
-  components: { Rules },
-  computed: {
-    pageName() {
-      return destinations[this.$route.name];
-    },
-  },
+  components: { Rules }
 }
 </script>
 

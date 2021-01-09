@@ -1,15 +1,7 @@
 <template>
   <div class="inner_page character_select">
-    <div class="inner_page_title_block">
-      <h1 class="inner_page_title_text">Choose a Character</h1>
-      <div class="title_buttons">
-        <button class="button character_title_button"
-                v-on:click="chooseRandomCharacter">Random</button>
-        <button class="button character_title_button character_reset"
-                v-bind:disabled="!selectedCharacterId"
-                v-on:click.prevent="setSelectedCharacter">Reset</button>
-      </div>
-    </div>
+    <TitleBlock v-on:random-button-clicked="chooseRandomCharacter"
+                v-on:reset-button-clicked="setSelectedCharacter"/>
     <div class="inner_field character_profiles">
       <Character
         v-for="character in characters"
@@ -26,12 +18,13 @@
 import { mapState } from "vuex";
 import Character from "@/components/Character.vue";
 import Controls from "@/components/Controls.vue";
+import TitleBlock from "@/components/TitleBlock.vue";
 import characters from "@/data/characters.js";
 import constants from "@/data/constants.js";
 import randomNumber from '@/helpers/randomNumber.js';
 
 export default {
-  components: { Character, Controls },
+  components: { Character, Controls, TitleBlock },
   data() {
     return {
       characters,

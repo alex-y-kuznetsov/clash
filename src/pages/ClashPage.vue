@@ -1,11 +1,6 @@
 <template>
   <div class="inner_page clash">
-    <div class="inner_page_title_block">
-      <h1 class="inner_page_title_text">Clash!</h1>
-      <div class="title_statistics">
-        {{ wonEncounters ? 'Encounters Won: ' + wonEncounters : ''}}
-      </div>
-    </div>
+    <TitleBlock />
     <div class="inner_field">
       <div class="battlefield" v-if="selectedCharacterId && !isGameOver">
         <div class="character_zone" >
@@ -40,9 +35,10 @@ import Bars from "@/components/Bars.vue";
 import Encounter from "@/components/Encounter.vue";
 import Versus from "@/components/Versus.vue";
 import Controls from "@/components/Controls.vue";
+import TitleBlock from "@/components/TitleBlock.vue";
 
 export default {
-  components: { Character, Bars, Encounter, Versus, Controls },
+  components: { Character, Bars, Encounter, Versus, Controls, TitleBlock },
   data() {
     return {
       constants,
