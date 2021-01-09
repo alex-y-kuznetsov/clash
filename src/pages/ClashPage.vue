@@ -101,9 +101,13 @@ export default {
       }, 1000);  
     },
     fight() {
-      this.characterResourceObject.damageTaken += this.activeEncounterObject.stats[2].value;
+      const characterAttack = this.selectedCharacterObject.stats[2].value,
+            characterDefense = this.selectedCharacterObject.stats[3].value,
+            encounterAttack = this.activeEncounterObject.stats[2].value,
+            encounterDefense = this.activeEncounterObject.stats[3].value;
+      this.characterResourceObject.damageTaken += (encounterAttack - characterDefense);
       this.characterResourceObject.staminaSpent += this.selectedCharacterObject.skill.staminaCost;
-      this.encounterResourceObject.damageTaken += this.selectedCharacterObject.stats[2].value;
+      this.encounterResourceObject.damageTaken += (characterAttack - encounterDefense);
       let combinedResourceObject = {
         chracterResources: this.characterResourceObject,
         encounterResources: this.encounterResourceObject
