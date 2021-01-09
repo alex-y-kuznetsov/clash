@@ -3,6 +3,7 @@
     <div class="home container">
       <router-view/>
     </div>
+    <Rules />
   </div>
 </template>
 
@@ -12,7 +13,10 @@ const destinations = {
   ClashPage: 'Clash'
 };
 
+import Rules from "@/components/Rules.vue";
+
 export default {
+  components: { Rules },
   computed: {
     pageName() {
       return destinations[this.$route.name];

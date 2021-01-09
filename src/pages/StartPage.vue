@@ -19,9 +19,12 @@
         v-on:character-selection="setSelectedCharacter($event)" />
     </div>
     <div class="inner_page_controls">
+      <button class="button rules_toggler_button"
+              v-if="!isRulesShown"
+              v-on:click="$store.commit('setRulesShown', true)">?</button>
       <button v-on:click="goToClash"
               v-if="selectedCharacterId"
-              class="button next_button">Next</button>
+              class="button transition_button">Next</button>
     </div>
   </div>
 </template>
@@ -43,7 +46,8 @@ export default {
   },
   computed: {
     ...mapState([
-      'selectedCharacterId'
+      'selectedCharacterId',
+      'isRulesShown'
     ])
   },
   methods: {

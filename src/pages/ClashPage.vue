@@ -29,7 +29,7 @@
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character.</div>
     </div>
     <div class="inner_page_controls">
-      <button v-on:click.prevent="goBack" class="button">{{ isCharacterVenturing ? 'Retreat' : 'Back' }}</button>
+      <button v-on:click.prevent="goBack" class="button transition_button">{{ isCharacterVenturing ? 'Retreat' : 'Back' }}</button>
     </div>
   </div>
 </template>
