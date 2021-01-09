@@ -18,9 +18,9 @@ const routes = [
     component: ClashPage
   },
   {
-    name: 'notFound',
-    component: NotFoundPage,
     path: '/404',
+    name: 'NotFoundPage',
+    component: NotFoundPage
   },
   {
     path: '*',

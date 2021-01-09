@@ -19,7 +19,8 @@
 <script>
 const destinations = {
   StartPage: 'Choose a Character',
-  ClashPage: 'Clash!'
+  ClashPage: 'Clash!',
+  NotFoundPage: 'Nope!'
 };
 
 import { mapState } from "vuex";
