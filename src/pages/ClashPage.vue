@@ -28,9 +28,7 @@
       <div class="character_error" v-if="selectedCharacterId && isGameOver">Defeat! <br /> The Encounters were too strong and too many. </div>
       <div class="character_error" v-if="!selectedCharacterId">Please go back to the character select screen to select a character.</div>
     </div>
-    <div class="inner_page_controls">
-      <button v-on:click.prevent="goBack" class="button transition_button">{{ isCharacterVenturing ? 'Retreat' : 'Back' }}</button>
-    </div>
+    <Controls v-on:back-clicked="goBack"/>
   </div>
 </template>
 
@@ -41,9 +39,10 @@ import Character from "@/components/Character.vue";
 import Bars from "@/components/Bars.vue";
 import Encounter from "@/components/Encounter.vue";
 import Versus from "@/components/Versus.vue";
+import Controls from "@/components/Controls.vue";
 
 export default {
-  components: { Character, Bars, Encounter, Versus },
+  components: { Character, Bars, Encounter, Versus, Controls },
   data() {
     return {
       constants,

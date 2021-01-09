@@ -18,26 +18,20 @@
         v-bind:selected="character.id === selectedCharacterId"
         v-on:character-selection="setSelectedCharacter($event)" />
     </div>
-    <div class="inner_page_controls">
-      <button class="button rules_toggler_button"
-              v-if="!isRulesShown"
-              v-on:click="$store.commit('setRulesShown', true)">?</button>
-      <button v-on:click="goToClash"
-              v-if="selectedCharacterId"
-              class="button transition_button">Next</button>
-    </div>
+    <Controls v-on:to-clash-clicked="goToClash"/>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import Character from "@/components/Character.vue";
+import Controls from "@/components/Controls.vue";
 import characters from "@/data/characters.js";
 import constants from "@/data/constants.js";
 import randomNumber from '@/helpers/randomNumber.js';
 
 export default {
-  components: { Character },
+  components: { Character, Controls },
   data() {
     return {
       characters,
@@ -46,8 +40,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'selectedCharacterId',
-      'isRulesShown'
+      'selectedCharacterId'
     ])
   },
   methods: {
