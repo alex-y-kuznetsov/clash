@@ -5,5 +5,6 @@ module.exports = {
         additionalData: ' @import "~@/assets/styles/styles.less"; '
       }
     }
-  }
+  },
+  publicPath: '/clash-build/'
 }
