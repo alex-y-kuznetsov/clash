@@ -1,6 +1,6 @@
 <template>
   <div class="inner_page_controls">
-      <button class="button rules_toggler_button"
+      <button class="button rules_toggler_button rules_opener_button"
               v-bind:disabled="isRulesShown"
               v-if="pageName !== 'NotFoundPage'"
               v-on:click="$store.commit('setRulesShown', true)">?</button>
