@@ -7,3 +7,15 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@media (max-width: @mobile_width) {
+  .versus_sign {
+    margin: 20px 0 0 0;
+
+    .button {
+      &:not(:last-child) {
+        margin-bottom: 6px;
+      }
+    }
+  }
+}
