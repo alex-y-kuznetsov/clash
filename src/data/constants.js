@@ -2,5 +2,6 @@ export default {
   FIRST_ENCOUNTER_ID: 1,
   LAST_ENCOUNTER_ID: 6,
   FIRST_CHARACTER_ID: 1,
-  LAST_CHARACTER_ID: 3
+  LAST_CHARACTER_ID: 3,
+  PROJ_PATH: '/clash-build'
 }

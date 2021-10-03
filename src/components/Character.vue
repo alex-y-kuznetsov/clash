@@ -7,7 +7,7 @@
     </div>
     <div class="character_profile_data">
       <div class="character_profile_image">
-        <img v-bind:src="currentCharacter.img" />
+        <img v-bind:src="constants.PROJ_PATH + currentCharacter.img" />
       </div>
       <div class="character_profile_stats">
         <div class="character_stats_item" 
@@ -25,7 +25,7 @@
         <div class="character_resourses">
           <div class="resourses_item">
             <div class="resourses_item_visual">
-              <img v-bind:src="currentCharacter.item.img" />
+              <img v-bind:src="constants.PROJ_PATH + currentCharacter.item.img" />
             </div>
             <div class="resourses_item_stats">
               {{ currentCharacter.item.name }} <br /> ({{ currentCharacter.item.summary }})
@@ -38,7 +38,7 @@
         <div class="character_resourses">
           <div class="resourses_item">
             <div class="resourses_item_visual">
-              <img v-bind:src="currentCharacter.skill.img" />
+              <img v-bind:src="constants.PROJ_PATH + currentCharacter.skill.img" />
             </div>
             <div class="resourses_item_stats">
               {{ currentCharacter.skill.name }} <br /> ({{ currentCharacter.skill.summary }})
@@ -54,7 +54,8 @@
 </template>
 
 <script>
-import characters from '@/data/characters.js'
+import characters from '@/data/characters.js';
+import constants from '@/data/constants.js'
 
 export default {
   props: {
@@ -67,6 +68,7 @@ export default {
   },
   data() {
     return {
+      constants,
       characterId: this.id,
       modifiedStatData: null
     };

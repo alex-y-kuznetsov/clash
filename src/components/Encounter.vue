@@ -5,7 +5,7 @@
     </div>
     <div class="character_profile_data">
       <div class="character_profile_image">
-        <img v-bind:src="currentEncounter.img" />
+        <img v-bind:src="constants.PROJ_PATH + currentEncounter.img" />
       </div>
       <div class="character_profile_stats">
         <div class="character_stats_item" 
@@ -25,12 +25,13 @@
 
 <script>
 import { mapState } from "vuex";
-import encounters from '@/data/encounters.js'
+import encounters from '@/data/encounters.js';
+import constants from '@/data/constants.js'
 
 export default {
   data() {
     return {
-
+      constants
     }
   },
   watch: {
